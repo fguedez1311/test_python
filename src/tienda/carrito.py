@@ -1,4 +1,4 @@
-from productos import Producto
+from .productos import Producto
 
 
 class Carrito:
