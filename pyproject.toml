@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tienda"
+version = "0.1.0"
+description = "Proyecto de tienda con carrito y productos"
+requires-python = ">=3.9"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+# Carpeta donde están los tests (en tu proyecto se llama "test")
+testpaths = ["test"]
+# Permite hacer "from tienda.carrito import ..." sin instalar el paquete
+pythonpath = ["src"]
+# Patrones de archivos, clases y funciones de test
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+# -v: salida detallada | -ra: resumen de fallos/skips
+addopts = "-v -ra"
+
+[tool.coverage.run]
+source = ["src/tienda"]
+
+[tool.coverage.report]
+show_missing = true
